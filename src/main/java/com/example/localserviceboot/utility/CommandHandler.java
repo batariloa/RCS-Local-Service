@@ -4,9 +4,7 @@ import com.example.localserviceboot.model.Command;
 
 public class CommandHandler {
 
-
     public static void handleCommand(Command command){
-
 
         switch (command.getType()){
 
@@ -18,7 +16,6 @@ public class CommandHandler {
                 ScriptService.commandTorrent(command.getCommand());
                 break;
 
-
             case SHUTDOWN:
                 ScriptService.shutDownNow();
                 break;
@@ -27,8 +24,6 @@ public class CommandHandler {
                 ScriptService.monkey();
 
                 break;
-
-
         }
 
     }

@@ -2,16 +2,11 @@ package com.example.localserviceboot.http;
 
 import com.example.localserviceboot.adapter.LocalDateAdapter;
 import com.example.localserviceboot.model.LoggedAccess;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
@@ -22,15 +17,7 @@ public class HttpService {
 
      Gson gson;
 
-
-
-
-
-    static InputStream is = null;
-
-
     public  boolean httpRequest(String username, String serverURL) throws IOException {
-
 
         gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -38,7 +25,6 @@ public class HttpService {
                 .create();
 
         String jsonInputString = gson.toJson(new LoggedAccess(username));
-
 
         System.out.println("SERVER URL JE " + serverURL);
         URL url = new URL(serverURL + "/status");
@@ -55,10 +41,7 @@ public class HttpService {
         wr.writeBytes(jsonInputString);
         wr.close();
 // This line makes the request
-        InputStream responseStream = connection.getInputStream();
-
-
-
+        connection.getInputStream();
 
         return  true;
 
